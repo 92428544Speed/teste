@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cálculo de Custo de Impressão</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+ <style>
+    .container {
+        margin-top: 20px;
+    }
+    
+    img {
+        position: absolute;
+        top: 2%;
+        left: 16%;
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        margin-top: 120px;
+    }
+</style>
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">Cálculo de Custo de Impressão</h1>
+        <img src="https://i.postimg.cc/ydSyYHcz/logo-speed-nova.png" alt="Logo Speed Nova">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="number" id="folhas" name="folhas">
+                        <label for="folhas" class="active">Quantidade de Folhas:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="tipo-impressao" name="tipo-impressao">
+                            <option value="frente">Apenas Frente</option>
+                            <option value="frente-e-verso">Frente e Verso</option>
+                        </select>
+                        <label for="tipo-impressao">Cor de Impressão</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" id="custo-pb" name="custo-pb" placeholder="Custo Total Preto e Branco" readonly>
+<label for="custo-pb">Custo Total Preto e Branco:</label>
+</div>
+<div class="input-field col s6">
+<input type="text" id="custo-coloridas" name="custo-coloridas" placeholder="Custo Total Coloridas" readonly>
+<label for="custo-coloridas">Custo Total Coloridas:</label>
+</div>
+</div>
+			<div class="row center-align">
+				<p>
+					<label>
+                     <h5 class="center-align">Tipo de Impressão:
+                    <label >
+						<input type="checkbox" id="frente-e-verso" name="frente-e-verso" />
+						<span>Frente e Verso</span></h5>
+					</label>
+				</p>
+				<button class="btn waves-effect waves-light" type="button" onclick="calcularCusto()">Calcular</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+	function calcularCusto() {
+		// Obter valor da quantidade de folhas
+		var folhas = document.getElementById("folhas").value;
+
+		// Obter se é frente e verso ou não
+		var frenteVerso = document.getElementById("frente-e-verso").checked;
+
+		// Calcular custo total
+		var custoPB = folhas * 0.50;
+		var custoColoridas = folhas * 0.80;
+
+		if (frenteVerso) {
+			custoPB = custoPB * 1.5;
+			custoColoridas = custoColoridas * 1.5;
+		}
+
+		// Exibir custo total
+		document.getElementById("custo-pb").value = "R$ " + custoPB.toFixed(2);
+		document.getElementById("custo-coloridas").value = "R$ " + custoColoridas.toFixed(2);
+	}
+</script>
+
+
+
+
+</body>
+</html>
